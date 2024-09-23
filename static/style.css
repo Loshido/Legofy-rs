@@ -1,0 +1,233 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100svw;
+    height: 100svh;
+
+    position: relative;
+    padding: 16px 32px;
+
+    color: white;
+    font-family: sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to right,
+    #374151, #111827, #000);
+}
+
+.on{
+    display: block !important;
+}
+
+body > h1{
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+}
+
+body > p{
+    color: #fff8;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 300;
+
+    margin-bottom: 16px;
+}
+
+body > section.input{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    background-color: #0004;
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    
+    display: none;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+body > section.input.on{
+    display: flex !important;
+}
+
+body > section.output{
+    display: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    height: 100%;
+}
+body > section.output.on{
+    display: grid !important;
+}
+
+label[for="file"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+label[for="file"] > img.preview{
+    display: none;
+    width: 50%;
+    height: auto;
+    border-radius: 4px;
+}
+label[for="file"] > img.placeholder{
+    display: none;
+    width: 80px;
+    height: 80px;
+}
+
+
+div.interaction{
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+div.interaction > div.legofy{
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    
+    width: fit-content;
+    background-color: white;
+    padding: 4px 12px;
+    border-radius: 4px;
+    user-select: none;
+    
+    background-color: #ffffff59;
+    cursor: pointer;
+    transition: background .3s ease-in-out;
+}
+div.interaction > div.legofy > *{
+    display: none;
+}
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+div.interaction > div.legofy div:has(> svg).on{
+    display: flex !important;
+}
+div.interaction > div.legofy div:has(> svg){
+    flex-direction: row;
+    gap: 4px;
+}
+div.interaction > div.legofy svg{
+    width: 32px;
+    height: 32px;
+    margin-inline-end: 8px;
+    color: #e5e7eb;
+    fill: white;
+    animation: spin 1s linear infinite;
+}
+
+div.interaction > input{
+    background-color: #fff8;
+    padding: 8px;
+    border-radius: 4px;
+    width: 112px;
+
+    border: none;
+    outline: none;
+}
+div.interaction > input::placeholder{
+    color: white;
+}
+
+div.interaction > div.legofy:not(.disabled):hover{
+    background-color: #ffffff73;
+}
+
+div.interaction > div.legofy.disabled{
+    cursor: not-allowed;
+    background-color: #fff8;
+}
+
+label > input#file {
+    display: none;
+}
+
+section.output > div{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section.output > div > img{
+    height: auto;
+    width: 100%;
+    border-radius: 4px;
+}
+
+section.output > div > div{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+section.output > div > div > *{
+    border-radius: 4px;
+    padding: 4px 8px;
+    background-color: #ffffff80;
+}
+section.output > div > div > a{
+    color: unset;
+    text-decoration: unset;
+    background-color: #ffffffbf;
+}
+section.output > div > div > a:hover{
+    background-color: #ffffffD0;
+}
+
+#copy{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 20px;
+    font-weight: 300;
+    
+    color: unset;
+    text-decoration: unset;
+}
+
+@media (width < 1400px) {
+    body{
+        padding: 8px 16px;
+    }
+    body > section.output{
+        grid-template-columns: unset;
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+    }
+
+    section.output > div > img{
+        height: 100%;
+        width: auto;
+    }
+}
+
+@media (width < 900px) {
+    body{
+        padding: 4px 8px;
+    }
+}
